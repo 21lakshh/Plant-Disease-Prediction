@@ -17,7 +17,7 @@ Kisaan Saathi is a comprehensive solution aimed at empowering farmers with advan
 ### Model Details
 - **Architecture**: Pretrained Xception model
 - **Training Approach**:
-  - Used `ImageDataGenerator` for augmenting the training dataset.
+  - Used ImageDataGenerator for augmenting the training dataset.
   - Validation and test datasets were not augmented.
 - **Optimization**:
   - Initially trained the model with frozen layers.
@@ -54,22 +54,61 @@ Kisaan Saathi is a comprehensive solution aimed at empowering farmers with advan
      - Cause of the detected disease  
      - Prevention measures  
      - Treatment solutions  
+---
+### Docker Integration
+To enhance the portability and scalability of the application, Docker has been utilized to package the entire application into a containerized environment. 
 
+#### Steps to Build and Run the Docker Image
+1. **Dockerfile**:
+   - A `Dockerfile` has been created that includes all necessary instructions to containerize the Streamlit application.
+   - It specifies the base image, installs dependencies, copies the application code, and sets the command to run the Streamlit app.
+
+2. **Build the Docker Image**:
+   Run the following command to build the Docker image locally:
+   ```bash
+   docker build -t kisaan-saathi-image:v1.0 .
+   ```
+
+3. **Pull the Prebuilt Docker Image**:
+   The Docker image has been prebuilt and pushed to Docker Hub for easy access. You can pull it directly using:
+   ```bash
+   docker pull 21laksh/kisaan-saathi-image:v1.0
+   ```
+
+4. **Run the Docker Container**:
+   Use the following command to start the application in a container:
+   ```bash
+   docker run -p 8501:8501 21laksh/kisaan-saathi-image:v1.0
+   ```
+   - This will expose the application on `http://localhost:8501`.
+   - The containerized environment ensures consistent performance across different systems.
+
+---
 
 ## Project Structure
 ```
 App/
 │── main.py               # Streamlit-web Application
-│── class_indices.json      # All possible classes that can be predicted 
-│── config.json     # contains the Gemeni API Key  
+│── class_indices.json    # All possible classes that can be predicted 
+│── config.json           # Contains the Gemini API Key  
 │── trained_model/
-│   ├── plant_disease_prediciton.h5      # model file
-│── requirements.txt     # List of Python dependencies
+│   ├── plant_disease_prediction.h5  # Model file
+│── requirements.txt      # List of Python dependencies
+│── Dockerfile            # Docker instructions for containerizing the app
+│── config.toml           # Default Streamlit Configurations
+│── credentials.toml      # Stores credentials for Streamlit's advanced features like authentication
 ```
-Please download the plant_disease_prediction.h5 file through this drive link: 
-```sh
-https://drive.google.com/file/d/1PqrcW3zoCfQlyKB58uXOBpxUKvtO0rSh/view?usp=sharing
-```
+
+Please download the `plant_disease_prediction.h5` file through this drive link:  
+[Download Model File](https://drive.google.com/file/d/1PqrcW3zoCfQlyKB58uXOBpxUKvtO0rSh/view?usp=sharing)
+
+---
+Access the Docker Repository directly:  
+[Docker Repository Image](https://hub.docker.com/repository/docker/21laksh/kisaan-saathi-image/general)
+
+---
+
+
 ## Screenshots
 ![image1](Images/image1.png)
 ![image2](Images/image2.png)
@@ -80,6 +119,7 @@ https://drive.google.com/file/d/1PqrcW3zoCfQlyKB58uXOBpxUKvtO0rSh/view?usp=shari
 2. **Disease Detection**: The application classifies the disease using the pretrained Xception model.
 3. **AgriAssist Assistance**:
    - Choose between the predefined questions or use a custom prompt in any one of the listed languages.  
+
 ---
 
 ## How to Run
@@ -98,6 +138,7 @@ https://drive.google.com/file/d/1PqrcW3zoCfQlyKB58uXOBpxUKvtO0rSh/view?usp=shari
    ```bash
    streamlit run main.py
    ```
+
 ---
 
 ## Contributing
@@ -108,3 +149,4 @@ We welcome contributions! Feel free to open issues or submit pull requests.
 ## Acknowledgments
 - [PlantVillage Dataset](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset) for providing the dataset.
 - Gemini API for enabling advanced AI functionalities.
+- Docker for providing a robust containerized solution for deployment.
