@@ -1,7 +1,7 @@
 # Crop Disease Detection & AgriAssist Support
 
 ## Overview
-Kisaan Saathi is a comprehensive solution aimed at empowering farmers with advanced crop disease detection and personalized assistance. The project is divided into two main components:
+This is a comprehensive solution aimed at empowering farmers with advanced crop disease detection and personalized assistance. The project is divided into two main components:
 
 1. **Crop Disease Detection Model**
 2. **Streamlit Web Application with AgriAssist Chatbot**
